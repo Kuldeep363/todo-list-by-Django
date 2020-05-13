@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='tasks',
             name='deadline',
-            field=models.DateField(default=' '),
+            field=models.DateField(blank = True , default = '2020-05-20'),
         ),
     ]

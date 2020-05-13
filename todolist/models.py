@@ -8,7 +8,7 @@ signs = 'hvhgcyXTSJGcdyshshsFYHWIDHsiguydvavvsa'
 class tasks(models.Model):
     title = models.CharField(default='',blank=True,max_length=250)
     description = models.TextField(default='',null=True)
-    deadline = models.DateField(default=' ')
+    deadline = models.DateField(blank = True , default = '2020-05-20')
     complete = models.CharField(max_length=1, default='N')
     identity = models.CharField(max_length=200,default='234',blank=True)
 

@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(blank=True, default='', max_length=250)),
                 ('description', models.TextField(default='')),
-                ('deadline', models.DateField()),
+                ('deadline', models.DateField(blank = True , default = '2020-05-20')),
             ],
         ),
     ]
