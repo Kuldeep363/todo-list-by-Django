@@ -8,7 +8,7 @@ class tasksList(View):
     
     template_name = 'todolist/todo.html'
     def get(self,request):
-        t = tasks.objects.all()
+        t = tasks.objects.all().order_by('-id')
         return render(request,self.template_name,{'tasks':t})
 
 todoList = tasksList.as_view()
