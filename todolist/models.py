@@ -2,7 +2,7 @@ from django.db import models
 import random
 
 alpha = 'abcdefghijklmnopqrstuvwxyz0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ.@%()!#$^&*_+=-?<>,[];: '
-signs = '+_)(*&^%$#@!=-0987654321AbCdEfGhI[]:<>/?,jKlMnOpQrStUvWxYzaBcDeFghiJkLmNoPqRsTuVwXyZ[];'
+signs = '0248AbCd1EfGhIjK3lMnOp5QrStUv7WxYzaBc9DeFghiJkLmN6oPqRsTuVwXyZabcdEFGHijKLmnOPqrSTuvWXy'
 # Create your models here.
 
 class tasks(models.Model):
