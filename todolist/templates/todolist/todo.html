@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="icon" href="{% static 'todolist/images/icons8-user-100.png' %}">
+    <link rel="stylesheet" href="{% static 'todolist/css/todo.css' %}">
+    <title>To-Do List</title>
+
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+    
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                    <p id="todo">TO-DO LIST</p>
+                </div>
+            </div>
+    
+            <!-- tasks forms -->
+            <div class="d-flex justify-content-center align-item-center" id="todo-container">
+                <div class="d-flex justify-content-center form-container">
+                    <div style="width: 400px;">
+                        <form action="{% url 'addTask' %}" style="width: 100%;" method="POST">
+                            {% csrf_token %}
+                            <div class="input-div m-3">
+                                <label for="task" >Task</label><br>
+                                <input type="text" name="task" id="task" class="task-data" autocomplete='off' >
+                                <small id="task_error"></small>
+                            </div>
+    
+                            <div class="input-div m-3">
+                                <label for="description">Description( optional )</label><br>
+                                <textarea name="description" id="description" class="task-data" style="height: 120px;"></textarea>
+                            </div>
+
+                            <div class="input-div m-3" style="position: relative;">
+                                <label for="date">Deadline</label><br>
+                                <input type="date" name="deadline" id="date" class="task-data" >
+                                <span style="position: absolute;top: 30px;right: -5px;font-size: 45px;pointer-events: none;"> &#128197;</span>
+                                <small id="date_error"></small>
+                            </div>
+    
+                            <div style="text-align: center;">
+                                <button type="button"  id="check"><span class="p-1">&plus;</span><span >ADD TASK</span></button>
+                                <input type="submit" id="submit" style="display: none;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- tasks -->
+            {% if tasks %}
+            {% for task in tasks %}
+            <div class="d-flex justify-content-center m-3">
+                <div class="d-flex justify-content-center tasks-container">
+                <div class="tasks" {% if task.complete != 'N' %} style=" background-color:#80f6a4" {% endif %}>
+                        <div class="row title">
+                            <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center" >
+                                <div class="pt-2" style="font-weight: bold;">{{ task.title }}</div>
+                                <div ><span style="font-weight: bold;padding: 2px;">Deadline:</span> {{ task.deadline }} </div>
+                            </div>
+                            
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 task-status">
+                                <a href="{% url 'complete'  task.identity %}" {% if task.complete != 'N' %} style="pointer-events: none;" {% endif %}><img src="{% static 'todolist/images/icons8-checked-80.png' %}" alt="complted | task completed | checked | done" style="width: 40px;height: 40px;"></a>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 task-status">
+                                <a href="{% url 'delete' task.identity %}" ><img src="{% static 'todolist/images/icons8-remove-100.png' %}" alt="Delete task | remove task | not intrested in task" style="width: 40px;height: 40px;"></a>
+                            </div>
+                          
+                            
+                        </div>
+                            <div class="text-center col-xl-12" >
+                                <button class="more btn">&#65086;</button>
+                            </div>
+                        
+                            
+                        <div  class="task-description text-center ">
+                            <p class="text-center" >Task Description</p>
+                            <p>
+                                {{ task.description }}
+                            </p>
+                            
+    
+                            <div class="text-center" >
+                                <button class="less btn">&#65085;</button>
+                            </div>
+                        </div>        
+                    </div>            
+                </div>            
+            </div>
+            {% endfor %}
+            {% endif %}    
+            </div>
+        </div>
+        <script src="{% static 'todolist/js/todo.js' %}"></script>
+    </body>
+</html>    
