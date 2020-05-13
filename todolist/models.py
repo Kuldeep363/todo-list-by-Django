@@ -1,8 +1,8 @@
 from django.db import models
 import random
 
-alpha = 'abcdefghijklmnopqrstuvwxyz0123456789- '
-signs = 'hvhgcyXTSJGcdyshshsFYHWIDHsiguydvavvsa'
+alpha = 'abcdefghijklmnopqrstuvwxyz0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ.@%()!#$^&*_+=-?<>,[];: '
+signs = '+_)(*&^%$#@!=-0987654321AbCdEfGhI[]:<>/?,jKlMnOpQrStUvWxYzaBcDeFghiJkLmNoPqRsTuVwXyZ[];'
 # Create your models here.
 
 class tasks(models.Model):
