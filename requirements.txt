@@ -38,7 +38,7 @@ pkginfo==1.5.0.1
 protobuf==3.11.3
 psycopg2==2.8.5
 pycparser==2.20
-Pygments==2.4.2
+Pygments==2.7.4
 PyJWT==1.7.1
 pylint==2.4.4
 pyloco==0.0.139
